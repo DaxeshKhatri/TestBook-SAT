@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="BottomSheet.StyleDialog" parent="BottomSheet.Dialog">
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowAnimationStyle">@style/BottomSheet.Animation</item>
+        <item name="android:textColorPrimary">#707070</item>
+        //Bottom Text Color
+        <item name="android:textColorSecondary">@color/colorPrimary</item>
+        //Title Color
+        <item name="android:textSize">20dp</item>
+        <item name="bs_dialogBackground">#FFFFFF</item>
+        <item name="bs_dividerColor">#BCC3CC</item></style>
+
+</resources>

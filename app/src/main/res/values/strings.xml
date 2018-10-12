@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TestbookChat</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="create_account">SUBMIT</string>
+    <string name="log_out">Log Out</string>
+    <string name="file_provider_authority" translatable="false">com.testbook.app.provider</string>
+
+    <string name="default_status">Hi there, I\'m using Testbook Chat app</string>
+    <string name="validation_input_firstname">Please enter first name to create account</string>
+    <string name="validation_input_lastname">Please enter last name to create account</string>
+    <string name="validation_input_email">Please enter valid email to create account</string>
+    <string name="noInternet">No Internet connection Available!</string>
+</resources>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "157869143071",
+    "firebase_url": "https://testfirebase1-48b83.firebaseio.com",
+    "project_id": "testfirebase1-48b83",
+    "storage_bucket": "testfirebase1-48b83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157869143071:android:669fa117dffb6703",
+        "android_client_info": {
+          "package_name": "com.testbook.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157869143071-o4t2lcpa3rek4akbekrnoru4gquf8jl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4Rnn6Ndjzt6hL2li_V0ivgWY8ig245eg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
