@@ -101,28 +101,35 @@ public class FriendsFragment extends Fragment {
                 mUsersDatabase.child(list_user_id).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                         String userName="",imgURL="";
+                        try{
+                            userName = dataSnapshot.child("fname").getValue().toString()+" "+dataSnapshot.child("lname").getValue().toString();;
+                             imgURL = dataSnapshot.child("image").getValue().toString();
 
-                        final String userName = dataSnapshot.child("fname").getValue().toString()+" "+dataSnapshot.child("lname").getValue().toString();;
-                        final String imgURL = dataSnapshot.child("image").getValue().toString();
+                            if(dataSnapshot.hasChild("online")) {
 
-                        if(dataSnapshot.hasChild("online")) {
+                                String userOnline = dataSnapshot.child("online").getValue().toString();
+                                friendsViewHolder.setUserOnline(userOnline);
 
-                            String userOnline = dataSnapshot.child("online").getValue().toString();
-                            friendsViewHolder.setUserOnline(userOnline);
+                            }
+
+                            friendsViewHolder.setName(userName);
+                            friendsViewHolder.setUserImage(imgURL, getContext());
+                        }catch (Exception e){
 
                         }
 
-                        friendsViewHolder.setName(userName);
-                        friendsViewHolder.setUserImage(imgURL, getContext());
 
+                        final String finalUserName = userName;
+                        final String finalImgURL = imgURL;
                         friendsViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
 
                                 Intent chatIntent = new Intent(getContext(), ChatActivity.class);
                                 chatIntent.putExtra("user_id", list_user_id);
-                                chatIntent.putExtra("user_name", userName);
-                                chatIntent.putExtra("image",imgURL);
+                                chatIntent.putExtra("user_name", finalUserName);
+                                chatIntent.putExtra("image", finalImgURL);
                                 startActivity(chatIntent);
 
                             }

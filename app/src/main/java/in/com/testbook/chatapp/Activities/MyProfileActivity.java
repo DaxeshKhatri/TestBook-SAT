@@ -101,18 +101,28 @@ public class MyProfileActivity extends AppCompatActivity {
         mUserDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                String image="";
+                try{
 
-                String fname = dataSnapshot.child("fname").getValue().toString();
-                String lname = dataSnapshot.child("lname").getValue().toString();
-                final String image = dataSnapshot.child("image").getValue().toString();
+                    String fname = dataSnapshot.child("fname").getValue().toString();
+                    String lname = dataSnapshot.child("lname").getValue().toString();
+                      image = dataSnapshot.child("image").getValue().toString();
 
-                edtFirstName.getEditText().setText(fname);
-                edtLastName.getEditText().setText(lname);
-                mEmail.getEditText().setText(mCurrentUser.getEmail());
-                mEmail.getEditText().setEnabled(false);
+                    edtFirstName.getEditText().setText(fname);
+                    edtLastName.getEditText().setText(lname);
+                    mEmail.getEditText().setText(mCurrentUser.getEmail());
+                    mEmail.getEditText().setEnabled(false);
+
+                }catch (Exception e){
+
+                }
+
+
+
 
                 if(!image.equals("default")) {
 
+                    final String finalImage = image;
                     Picasso.with(MyProfileActivity.this).load(image).networkPolicy(NetworkPolicy.OFFLINE)
                             .placeholder(R.drawable.default_avatar).into(profile_image, new Callback() {
                         @Override
@@ -120,7 +130,7 @@ public class MyProfileActivity extends AppCompatActivity {
                         }
                         @Override
                         public void onError() {
-                            Picasso.with(MyProfileActivity.this).load(image).placeholder(R.drawable.default_avatar).into(profile_image);
+                            Picasso.with(MyProfileActivity.this).load(finalImage).placeholder(R.drawable.default_avatar).into(profile_image);
                         }
                     });
 

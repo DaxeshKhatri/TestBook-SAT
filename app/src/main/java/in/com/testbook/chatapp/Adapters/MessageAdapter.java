@@ -86,15 +86,21 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String name = dataSnapshot.child("fname").getValue().toString()+" "+dataSnapshot.child("lname").getValue().toString();;
-              
-                viewHolder.displayName.setText(name);
-                String image = dataSnapshot.child("image").getValue().toString();
+                try{
+                    String name = dataSnapshot.child("fname").getValue().toString()+" "+dataSnapshot.child("lname").getValue().toString();;
 
-                viewHolder.displayName.setText(name);
+                    viewHolder.displayName.setText(name);
+                    String image = dataSnapshot.child("image").getValue().toString();
+
+                    viewHolder.displayName.setText(name);
 //
-                Picasso.with(viewHolder.profileImage.getContext()).load(image)
-                        .placeholder(R.drawable.default_avatar).into(viewHolder.profileImage);
+                    Picasso.with(viewHolder.profileImage.getContext()).load(image)
+                            .placeholder(R.drawable.default_avatar).into(viewHolder.profileImage);
+                }catch (Exception e){
+
+                }
+
+
             }
 
             @Override

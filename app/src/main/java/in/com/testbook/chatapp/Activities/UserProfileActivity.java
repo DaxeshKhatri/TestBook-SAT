@@ -254,14 +254,20 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String display_name = dataSnapshot.child("fname").getValue().toString() + dataSnapshot.child("lname").getValue().toString();
-                String status = dataSnapshot.child("status").getValue().toString();
-                String image = dataSnapshot.child("image").getValue().toString();
 
-                mProfileName.setText(display_name);
-                mProfileStatus.setText(status);
+                try{
+                    String display_name = dataSnapshot.child("fname").getValue().toString() + dataSnapshot.child("lname").getValue().toString();
+                    String status = dataSnapshot.child("status").getValue().toString();
+                    String image = dataSnapshot.child("image").getValue().toString();
 
-                Picasso.with(UserProfileActivity.this).load(image).placeholder(R.drawable.default_avatar).into(mProfileImage);
+                    mProfileName.setText(display_name);
+                    mProfileStatus.setText(status);
+
+                    Picasso.with(UserProfileActivity.this).load(image).placeholder(R.drawable.default_avatar).into(mProfileImage);
+                }catch (Exception e){
+
+                }
+
 
                 if (mCurrent_user.getUid().equals(user_id)) {
 

@@ -138,21 +138,29 @@ public class ChatsFragment extends Fragment {
                 mUsersDatabase.child(list_user_id).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        String userName="",imgURL="";
+                        try{
 
-                        final String userName = dataSnapshot.child("fname").getValue().toString()+" "+dataSnapshot.child("lname").getValue().toString();
-                        final String userThumb = dataSnapshot.child("thumb_image").getValue().toString();
-                        final String imgURL = dataSnapshot.child("image").getValue().toString();
+                            userName = dataSnapshot.child("fname").getValue().toString()+" "+dataSnapshot.child("lname").getValue().toString();
+                             imgURL = dataSnapshot.child("image").getValue().toString();
 
-                        if(dataSnapshot.hasChild("online")) {
+                            if(dataSnapshot.hasChild("online")) {
 
-                            String userOnline = dataSnapshot.child("online").getValue().toString();
-                            convViewHolder.setUserOnline(userOnline);
+                                String userOnline = dataSnapshot.child("online").getValue().toString();
+                                convViewHolder.setUserOnline(userOnline);
+
+                            }
+
+                            convViewHolder.setName(userName);
+                            convViewHolder.setUserImage(imgURL, getContext());
+
+                        }catch (Exception e){
 
                         }
 
-                        convViewHolder.setName(userName);
-                        convViewHolder.setUserImage(userThumb, getContext());
 
+                        final String finalImgURL = imgURL;
+                        final String finalUserName = userName;
                         convViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -160,8 +168,8 @@ public class ChatsFragment extends Fragment {
 
                                 Intent chatIntent = new Intent(getContext(), ChatActivity.class);
                                 chatIntent.putExtra("user_id", list_user_id);
-                                chatIntent.putExtra("user_name", userName);
-                                chatIntent.putExtra("image",userThumb);
+                                chatIntent.putExtra("user_name", finalUserName);
+                                chatIntent.putExtra("image", finalImgURL);
                                 startActivity(chatIntent);
 
                             }
