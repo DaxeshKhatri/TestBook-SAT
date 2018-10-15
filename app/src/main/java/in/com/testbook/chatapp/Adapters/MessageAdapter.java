@@ -87,12 +87,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 String name = dataSnapshot.child("fname").getValue().toString()+" "+dataSnapshot.child("lname").getValue().toString();;
-                String image = dataSnapshot.child("thumb_image").getValue().toString();
+              
+                viewHolder.displayName.setText(name);
+                String image = dataSnapshot.child("image").getValue().toString();
 
                 viewHolder.displayName.setText(name);
 //
-//                Picasso.with(viewHolder.profileImage.getContext()).load(image)
-//                        .placeholder(R.drawable.no_image).into(viewHolder.profileImage);
+                Picasso.with(viewHolder.profileImage.getContext()).load(image)
+                        .placeholder(R.drawable.default_avatar).into(viewHolder.profileImage);
             }
 
             @Override
