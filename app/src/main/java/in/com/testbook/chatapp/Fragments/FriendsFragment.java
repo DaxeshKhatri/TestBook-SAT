@@ -103,7 +103,6 @@ public class FriendsFragment extends Fragment {
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         final String userName = dataSnapshot.child("fname").getValue().toString()+" "+dataSnapshot.child("lname").getValue().toString();;
-                        final String userThumb = dataSnapshot.child("thumb_image").getValue().toString();
                         final String imgURL = dataSnapshot.child("image").getValue().toString();
 
                         if(dataSnapshot.hasChild("online")) {
@@ -114,7 +113,7 @@ public class FriendsFragment extends Fragment {
                         }
 
                         friendsViewHolder.setName(userName);
-                        friendsViewHolder.setUserImage(userThumb, getContext());
+                        friendsViewHolder.setUserImage(imgURL, getContext());
 
                         friendsViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -123,7 +122,7 @@ public class FriendsFragment extends Fragment {
                                 Intent chatIntent = new Intent(getContext(), ChatActivity.class);
                                 chatIntent.putExtra("user_id", list_user_id);
                                 chatIntent.putExtra("user_name", userName);
-                                chatIntent.putExtra("image",userThumb);
+                                chatIntent.putExtra("image",imgURL);
                                 startActivity(chatIntent);
 
                             }
@@ -193,7 +192,6 @@ public class FriendsFragment extends Fragment {
             }
 
         }
-
 
     }
 
